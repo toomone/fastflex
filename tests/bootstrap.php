@@ -17,7 +17,7 @@ class LocalWebTestCase extends WebTestCase {
           'templates.path' => __DIR__ . '/../app/templates'
       ));
       // Include our core application file
-      require PROJECT_ROOT . '/app/app.php';
+      require PROJECT_ROOT . '/index.php';
       return $app;
     }
 };
