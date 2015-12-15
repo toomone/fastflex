@@ -1,6 +1,6 @@
 {
     "require": {
         "slim/slim": "^2.6",
-        "there4/slim-test-helpers": "dev-master",
+        "there4/slim-test-helpers": "dev-master"
     }
 }
