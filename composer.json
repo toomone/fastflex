@@ -4,6 +4,6 @@
         "there4/slim-test-helpers": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.*",
+        "phpunit/phpunit": "4.*"
     }
 }
