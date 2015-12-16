@@ -15,3 +15,5 @@ deploy:
   username: pocff       # If AZURE_WA_USERNAME isn't set
   password: Ebc12Svf   # If AZURE_WA_PASSWORD isn't set
   site: http://poc.azurewebsites.net       # If AZURE_WA_SITE isn't set
+  on:
+   branch: master
