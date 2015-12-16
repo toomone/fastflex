@@ -17,3 +17,6 @@ deploy:
   site: poc       # If AZURE_WA_SITE isn't set
   verbose: true
   skip_cleanup: true
+
+notifications:
+  slack: bonnenuit:TM9Vpftr7I2HKD42Iey43kIQ
