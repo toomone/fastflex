@@ -16,3 +16,4 @@ deploy:
   password: Ebc12Svf   # If AZURE_WA_PASSWORD isn't set
   site: poc       # If AZURE_WA_SITE isn't set
   verbose: true
+  skip_cleanup: true
