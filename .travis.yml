@@ -24,6 +24,8 @@ deploy:
     region: eu-west-1
     access_key_id: AKIAJ2TIIY3ALFBSLOFQ
     secret_access_key: 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
+    skip_cleanup: true
+    verbose: true
 
 notifications:
   slack: bonnenuit:TM9Vpftr7I2HKD42Iey43kIQ
