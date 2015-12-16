@@ -11,12 +11,19 @@ script:
   - ./vendor/bin/phpunit
 
 deploy:
-  provider: azure_web_apps
-  username: pocff       # If AZURE_WA_USERNAME isn't set
-  password: Ebc12Svf   # If AZURE_WA_PASSWORD isn't set
-  site: poc       # If AZURE_WA_SITE isn't set
-  verbose: true
-  skip_cleanup: true
+  - provider: azure_web_apps
+    username: pocff       # If AZURE_WA_USERNAME isn't set
+    password: Ebc12Svf   # If AZURE_WA_PASSWORD isn't set
+    site: poc       # If AZURE_WA_SITE isn't set
+    verbose: true
+    skip_cleanup: true
+  - provider: elasticbeanstalk
+    app: poc # Elastic Beanstalk app name
+    env: devff-env # Elastic Beanstalk env name
+    bucket_name: elasticbeanstalk-eu-west-1-543443504517 # S3 bucket used by Elastic Beanstalk
+    region: eu-west-1
+    access_key_id: AKIAJ2TIIY3ALFBSLOFQ
+    secret_access_key: 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
 
 notifications:
   slack: bonnenuit:TM9Vpftr7I2HKD42Iey43kIQ
