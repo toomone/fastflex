@@ -30,8 +30,8 @@ $app->get('/version', function () use ($app) {
 // Say hello to a user
 // -----------------------------------------------------------------------------
 // Used to test parameters from [issue 4](https://github.com/there4/slim-unit-testing-example/issues/4).
-$app->get('/say-hello/:name', function ($name) use ($app) {
-    $response = $name ? 'Hello ' . $name : 'Missing parameter for name';
+$app->get('/hello/:name', function ($name) use ($app) {
+    $response = $name ? 'Hello, '. $name : 'Missing parameter for name';
     $app->response->write($response);
 });
 
