@@ -1,31 +1,31 @@
 language: php
-
 php:
-  - 5.5
-
+- 5.5
 before_install:
-  - composer self-update
-  - composer install --dev -n --prefer-source
-
+- composer self-update
+- composer install --dev -n --prefer-source
 script:
-  - ./vendor/bin/phpunit
-
+- "./vendor/bin/phpunit"
 deploy:
+  matrix:
   - provider: azure_web_apps
-    username: pocff       # If AZURE_WA_USERNAME isn't set
-    password:    # If AZURE_WA_PASSWORD isn't set
-    site: poc       # If AZURE_WA_SITE isn't set
+    username:
+      secure: hE0uJqQHkHJXw+uYurFSvpO8pw3HYkS7clQSOHoHjp2SKmkQRgJNbgkm7sbRvsEGk2qqvSN+hWm86X+jUboc/G3BresFLKgNaiBbCOusrbD3U1J3zoh2+Sk3NMVMTdwY7xNbjciYgSd8ZXLteDgLvjWe+nmpP+IJMRfvKlbOxyGHSJs4U9y99kY/WMRb/GvYiLfzWdioPHV4l4zMFmta8uz9Ij2J0RjkUekjLfNiHiKni0+Ju7Ijyn+kJKE8jJ6MlRjwqM77mpm34/RuHnzLm/vlzVQHu1AI6ZDROuPlbxsHEOfsgwo60mARorxwJTBwZ3gG68sZmUw2PHYxIUdkKw0/2dhiw0J5RSrAZYU3r42/DcVru1iMifXeb4vb/P+Vwe3r3ZG2F3flOrIOHAN1R+TgLfDLlZChs2OtovPGSUMUxq7DQwJOVHds8KI2h22F5Xq65UVwhfwAc27fPIZrTskjnM+rfMEgww8X2m7sjjQ9UfoNuj+tnRpVHOBHiza5ca1UCOmu/Z2Z0bTzomKcjwVCl7Y4eWq324/G1v9xoZjjc1wV9FOG2E82bn3FWEg8a9R9NsYmRWPUBlJ69lX1MbIgDoFQL8D/rxKzHXOPBu+HmwsryYT7D+PCMv6XvX7lkuAyQ1H8s9ASWyo7IL1ThCv7jUJFqHyncZQ7jkS9bCc=
+    password:
+      secure: ZPQiuS80k+euvZi3ASfdi0g8w00CxvFhc4u2Uiz927FjxZqtGXYEK4eCBXoxZKHBlJICf6MoglA/uEmq9NCWzmIjFgNbYhUfSkdKupcZa3h7n/oATdWWMMgCECkX+0fcMYeuYDg53hVEF6CVikn80U7UfodpacdaSuhlJyfUCoWnjgHL39n9z0haXRaIarUt1LivYuIsMdc3aY9W50rJvlKDUSi1JtpvM0NEQYWCiahJ8RaWJQGYGbyBp9oA0YfYl9pdsTvYP8nDdhJurLPRTTJ1BE7jA51T/Oemm2GbCyUaDI6aknPer8t8VEHCpitq6BdeAxGchoB2jDwSyd9mmV4dzebAeZEegS8u0wneOZnHGFIJ9WPTh405hYTzYXqBpVnGE9dCCgTPBIgaGW36YKgVL+geYWhYV1K3dTMUHThb+CumWqfBzZ9C13XFmI/1bfHXjjK0PqNiTHEPhrfF580aPzeXDqS3an94140cNuQ9/YwDKkOdymCs08bL445CXQsLGBv8inX+7ETp3ktdQd9tMta010BqmBD27FmcASj7e+l2xjphcAX8nchvheeeNrBSwGHF+poXYmqbxiTE4kzgpGnvTv87ivX49JPXpEgq59DqIHu5n+OkY3GPeeP6CGg9mbhWOvCh4Ru7b9zH4qWw5qwhM+yyYUfD1EqJRJw=
+    site: poc
     verbose: true
     skip_cleanup: true
   - provider: elasticbeanstalk
-    app: poc # Elastic Beanstalk app name
-    env: devff-env # Elastic Beanstalk env name
-    bucket_name: elasticbeanstalk-eu-west-1-543443504517 # S3 bucket used by Elastic Beanstalk
+    app: poc
+    env: devff-env
+    bucket_name: elasticbeanstalk-eu-west-1-543443504517
     region: eu-west-1
-    access_key_id:
-    secret_access_key:
     skip_cleanup: true
     verbose: true
-
+    secret_access_key:
+      secure: dK6xU5gU/7fzVIql5Xa08ZYB1wsvuxzmwY3cZQfRC3hglgjkpNNaR5NgmTnrpxtPM2owjequxE6g9YGfYP37aCEz5wMNYT4PP4HmVrSGuweIUtDAqU8a+qxupH8YKu6tM5e8IEIGfSXa6RrmIAzFWxuh6Q/RLZbDGcWHZrGhLpqMqHzGh9ox9WxRjNt9GH6nuFaSfmRvlNH4FgwSJUnmZDotGHhrOBTh77bWxHxQHyEqvGQVkA0ZAZisfk29Y/m8Symqcf7X2i8JnHUsjq+K7VpGJvfxG9TsmX3maT6JfEODBF3TVW5BTp7MDphoZe0AMtVRT1rXu2rRQL+A8uRhDTfUONd1DGceIShM9DZh4wbjlH5stA2zDZpOyUPWJKskgoV+qdeIL9+m43orrpMpC1zd6AzMf/Hs37OVd5AIT0nYhG4pCQMqNxtdrKQEZ6ZctwmIPpt5P1chvJMEHtZLvxUasGqnIWPJLmt5XXtlJ/n3ALHE29Ok83AMZsfroCkbA9JugweoDRXbTwR69rK5md6iFvmmuxjhfGyFmdGug2pATbDBdY2C3/zFzJfgJX06RMFidV0RtkZ8M1655si1qJbYlH8K3wgnIqEIU1uQX6aMPg4waGuKq/ORxb7nOCXPeyrNH9PkMNJj44LzY6G2OwiHwc31C5jl+crxOTwEBc0=
+    access_key_id:
+      secure: M/rkZImGUQ1UnZdURRdLNcUL2m9uqA0lUfxlZCM4Y0eSKQhPw5/BNjBRNC/Zysedyxl83AnHsrxw6m0VoTTIGrRLiMPVBNG4IcWFTUJGI8y3FE5KD3CjhWheBQQhyxSHcCTrFAHqDo1lnBlhVUDRtqXeKq1UhrPm+MpvjWp1HGTh6zE21LbkqbJ/jHl5OK847rraSLTiXmZCbaknFyPUJBYG8888vQSKUGKWu8gR0/kmJKimchdgR9Cz8WgJ7c2mKPHeq1psjg2VRc9jWYD4/1THT9AQJv+rTh0ARbxcul39rlKf5k1euyMVX0P3uRxNX8MPNYDy/6zOGsLprjXLAzAU0AaHNo1Bjw+PfkfgnQTFN79lUMtqAhRqqDKy4it7S+wszWo+nOIIh5bujoA2VAsYYg7QYZegu4uxy/HCnAOUDk3DET7QemOBl5v8+j7EGWgumqMeEWmSlB+j2nXBMKv56xf+UbJb/Bfd5KAUZbmvvHGG4UiFZaLTYIJRrWExyGWRXllZrRPOZjFFOTwvCQ5sLtcTcm0uZBB2XRkf2kRLcESZUa59Tf4bZEn40TE8uGUGmBoMoaA0L+bMh+6xkFqxwTL1m72cbCxqodxfnkrYB7KvPMm6a/zaG0I2ooCSnfzR7tuDs8cgDpmXCPqPM3mTdfdZIQudQjB29DnryDw=
 notifications:
-  slack: bonnenuit:TM9Vpftr7I2HKD42Iey43kIQ
+  slack: bonnenuit:TM9Vpftr7I2HKD42Iey43kIQ 
